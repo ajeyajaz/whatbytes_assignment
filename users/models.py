@@ -5,7 +5,6 @@ from django.contrib.auth.models import (
 )
 
 class CustomUserManager(BaseUserManager):
-
     def create_user(self, email, password=None, **extra_fields):
         if not email:
             raise ValueError('The email is must be set')
@@ -13,7 +12,6 @@ class CustomUserManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
-
         # Save to database
         user.save()
         return user
@@ -31,11 +29,12 @@ class CustomUserManager(BaseUserManager):
 
 class User(AbstractUser):
     username = None
+    first_name = models.CharField(max_length=100, blank=False)
+    last_name = models.CharField(max_length=100, blank=False)
     email= models.EmailField(unique=True, blank=False)
-    name = models.CharField(max_length=255, blank=False)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = CustomUserManager()
 
