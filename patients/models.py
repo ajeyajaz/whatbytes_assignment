@@ -15,6 +15,6 @@ class Patient(models.Model):
     gender = models.CharField(max_length=20,choices=GENDER_CHOICES, default="Prefer not to say")
 
     def __str__(self):
-        return f"{self.last_name} added by {self.added_by}"
+        return f"{self.first_name} added by {self.added_by}"
 
 

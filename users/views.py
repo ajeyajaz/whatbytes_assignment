@@ -4,7 +4,3 @@ from .serializers import UserRegisterSerializer
 class UserRegisterAPIView(CreateAPIView):
     serializer_class = UserRegisterSerializer
 
-
-
-
-
