@@ -16,3 +16,5 @@ class Patient(models.Model):
 
     def __str__(self):
         return f"{self.last_name} added by {self.added_by}"
+
+
